@@ -65,9 +65,9 @@ def backwarp(tenInput, tenFlow):
 
 ##########################################################
 pic_1 = cv2.imread(filename='./images/GIFframe88.png', flags=-1)
-pic_1 = cv2.resize(pic_1, (320, 320))
+#pic_1 = cv2.resize(pic_1, (320, 320))
 pic_2 = cv2.imread(filename='./images/GIFframe89.png', flags=-1)
-pic_2 = cv2.resize(pic_1, (320, 320))
+#pic_2 = cv2.resize(pic_1, (320, 320))
 
 tenFirst = torch.FloatTensor(numpy.ascontiguousarray(pic_1.transpose(2, 0, 1)[None, :, :, :].astype(numpy.float32) * (1.0 / 255.0))).cuda()
 tenSecond = torch.FloatTensor(numpy.ascontiguousarray(pic_2.transpose(2, 0, 1)[None, :, :, :].astype(numpy.float32) * (1.0 / 255.0))).cuda()
