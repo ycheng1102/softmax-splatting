@@ -86,19 +86,21 @@ if __name__ == '__main__':
   # end
 
   # Opens the Video file
-  vidcap = cv2.VideoCapture('chikadance.mp4')
-  success,image = vidcap.read()
-  i = 0
-  while success:
-    cv2.imwrite('video/' + f'{i:04d}.jpg', image)    
-    success,image = vidcap.read()
-    i += 1
+  #vidcap = cv2.VideoCapture('chikadance.mp4')
+  #success,image = vidcap.read()
+  #i = 0
+  #while success:
+  #  cv2.imwrite('video/' + f'{i:04d}.jpg', image)    
+  #  success,image = vidcap.read()
+  #  i += 1
   
-  vidcap.release()
-  cv2.destroyAllWindows()
+  #vidcap.release()
+  #cv2.destroyAllWindows()
 
-  pic_1 = cv2.imread(filename='./images/first.png', flags=-1)  
-  pic_2 = cv2.imread(filename='./images/second.png', flags=-1)
+  #pic_1 = cv2.imread(filename='./images/first.png', flags=-1)  
+  #pic_2 = cv2.imread(filename='./images/second.png', flags=-1)
+  pic_1 = cv2.imread(filename=arguments_strFirst, flags=-1)
+  pic_2 = cv2.imread(filename=arguments_strSecond, flags=-1)
 
   tenFirst = torch.FloatTensor(numpy.ascontiguousarray(pic_1[:, :, ::-1].transpose(2, 0, 1).astype(numpy.float32) * (1.0 / 255.0)))
   tenSecond = torch.FloatTensor(numpy.ascontiguousarray(pic_2[:, :, ::-1].transpose(2, 0, 1).astype(numpy.float32) * (1.0 / 255.0)))
