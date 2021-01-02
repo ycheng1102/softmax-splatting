@@ -21,11 +21,14 @@ if os.path.isdir('linear'):
   shutil.rmtree('linear')
 if os.path.isdir('softmax'):
   shutil.rmtree('softmax')
+if os.path.isdir('video'):
+  shutil.rmtree('video')
 
 os.makedirs('summation')
 os.makedirs('average')
 os.makedirs('linear')
 os.makedirs('softmax')
+os.makedirs('video')
 ##########################################################
 
 assert(int(str('').join(torch.__version__.split('.')[0:2])) >= 13) # requires at least pytorch version 1.3.0
@@ -81,6 +84,18 @@ if __name__ == '__main__':
     if strOption == '--second' and strArgument != '': arguments_strSecond = strArgument # path to the second frame
     if strOption == '--out' and strArgument != '': arguments_strOut = strArgument # path to where the output should be stored
   # end
+
+  # Opens the Video file
+  vidcap = cv2.VideoCapture('chikadance.mp4')
+  success,image = vidcap.read()
+  i = 0
+  while success:
+    cv2.imwrite('video/' + f'{i:04d}.jpg', image)    
+    success,image = vidcap.read()
+    i += 1
+  
+  vidcap.release()
+  cv2.destroyAllWindows()
 
   pic_1 = cv2.imread(filename='./images/first.png', flags=-1)  
   pic_2 = cv2.imread(filename='./images/second.png', flags=-1)
