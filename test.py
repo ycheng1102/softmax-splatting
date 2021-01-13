@@ -83,6 +83,8 @@ if __name__ == '__main__':
   # end
 
   arg_FPS = int(arg_FPS)
+  arg_width = int(arg_width)
+  arg_height = int(arg_height)
 
   time = numpy.linspace(0.0, 1.0, arg_FPS + 1).tolist()
   time.remove(0.0)
@@ -160,7 +162,7 @@ if __name__ == '__main__':
 
   out = cv2.VideoWriter('project.mp4',cv2.VideoWriter_fourcc(*'mp4v'), arg_FPS * FPS , (arg_width, arg_height))
 
-  print('Total images :' + num2str(len(img_array)))
+  print('Total images :' + str(len(img_array)))
   for i in range(len(img_array)):
     out.write(img_array[i])
   out.release()
